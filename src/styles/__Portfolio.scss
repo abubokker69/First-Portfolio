@@ -1,0 +1,240 @@
+.container-wrap {
+  @apply md:w-[1420px] max-w-full mx-auto;
+  .container-port {
+    @apply flex justify-between items-center w-full  h-20  text-[#000000] px-4;
+
+    .logo {
+      @apply flex justify-center items-center;
+      img {
+        @apply md:w-[67px];
+      }
+      h1 {
+        span {
+          @apply text-5xl font-bold text-[#1E1E1E];
+        }
+        @apply text-4xl font-bold text-[#545454] ml-3;
+      }
+    }
+    ul {
+      @apply hidden md:flex gap-12 justify-center items-center;
+      li {
+        @apply cursor-pointer font-normal text-lg hover:scale-105 duration-200;
+      }
+      button {
+        @apply bg-[#FD6F00] px-3 py-1 text-white font-normal text-center rounded;
+      }
+    }
+    .menuicon {
+      @apply cursor-pointer pr-4 z-10 text-gray-300 md:hidden;
+    }
+  }
+  .smallmenu {
+    @apply flex  flex-col md:hidden gap-4 justify-center items-center h-screen  w-full  bg-[#292A2D] text-white;
+    li {
+      @apply px-4 cursor-pointer font-medium text-3xl text-gray-300 hover:scale-105 duration-200;
+    }
+  }
+  .section-one {
+    @apply flex flex-col-reverse md:flex-row justify-between items-center gap-4  mx-auto p-6 my-14;
+    h5 {
+      @apply font-semibold text-2xl;
+    }
+    h3 {
+      @apply font-semibold text-3xl text-[#FD6F00];
+    }
+    h1 {
+      @apply font-bold text-8xl text-[#000];
+    }
+    h2 {
+      @apply font-bold text-8xl text-[#000] flex justify-end items-end md:w-2/3;
+    }
+    p {
+      @apply font-normal text-xl flex justify-start w-2/3 mt-5;
+    }
+    button {
+      @apply font-normal text-lg text-white bg-[#FD6F00] px-4 py-1 mt-4 rounded;
+    }
+    .right-one {
+      @apply md:w-3/4 mr-4;
+      img {
+        @apply sm:w-[500px];
+      }
+      ul {
+        @apply flex justify-center items-center gap-4 mt-4;
+        li {
+          @apply cursor-pointer;
+          img {
+            @apply w-[32px] md:w-[32px];
+          }
+        }
+      }
+    }
+  }
+  .section-two {
+    @apply flex flex-col md:flex-row justify-between items-center gap-4  mx-auto p-6 my-14;
+    .right-two {
+      @apply w-3/4 space-y-3;
+      h1 {
+        @apply font-semibold text-6xl;
+      }
+      p {
+        @apply font-normal text-xl  w-2/3;
+      }
+      h5 {
+        @apply font-bold text-[24px];
+      }
+      input {
+        @apply flex justify-start md:w-2/3 rounded;
+      }
+      //   input[type="range"]::-webkit-slider-runnable-track {
+      //     background-color: #edecec;
+      //   }
+      input[type="range"] {
+        accent-color: #fd6f00;
+      }
+    }
+    .left-two {
+      @apply md:w-3/4;
+      img {
+        @apply md:w-3/4;
+      }
+    }
+  }
+  .section-three {
+    @apply mx-auto p-4;
+    .service {
+      @apply text-center;
+      h1 {
+        @apply font-semibold text-[65px];
+      }
+      p {
+        @apply font-normal text-[21px] md:w-2/4 mx-auto;
+      }
+    }
+    .service-wrap {
+      @apply flex flex-wrap flex-col md:flex-row mx-auto max-w-full my-8 gap-6;
+      .service-card {
+        @apply md:w-[300px] bg-[#F8F8F8] mx-auto border p-4 space-y-3  rounded shadow;
+        h2 {
+          @apply text-3xl font-semibold;
+        }
+        p {
+          @apply text-[19px] font-normal;
+        }
+      }
+    }
+  }
+  .section-four {
+    @apply mx-auto my-14;
+    .demo {
+      @apply text-center;
+      h1 {
+        @apply font-semibold text-[65px];
+      }
+      p {
+        @apply font-normal text-[21px] md:w-2/4 mx-auto;
+      }
+    }
+    .button {
+      @apply flex flex-col md:flex-row justify-center my-4 gap-4 p-4;
+      button {
+        @apply bg-[#F8F8F8] duration-300 border-[0.4px] border-[#FD6F00] hover:bg-[#FD6F00] hover:text-[#FFF] rounded-md font-normal text-2xl py-1 px-2;
+      }
+    }
+    .template-wrap {
+      @apply flex flex-wrap flex-col md:flex-row mx-auto my-8 gap-6 p-4;
+      .template-card {
+        @apply md:w-[400px] space-y-3 rounded mx-auto;
+        img {
+          @apply w-[100%];
+        }
+        h2 {
+          @apply text-xl font-normal text-[#FD6F00];
+        }
+        p {
+          @apply text-[24px] font-bold;
+        }
+      }
+    }
+  }
+  .section-five {
+    @apply mx-auto my-14;
+    .review {
+      @apply text-center;
+      h1 {
+        @apply font-semibold text-[65px];
+      }
+      p {
+        @apply font-normal text-[21px] md:w-2/4 mx-auto;
+      }
+    }
+
+    .review-wrap {
+      @apply flex flex-col justify-center items-center w-2/3 md:flex-row mx-auto my-8 gap-6 p-4 border rounded;
+      .images {
+        img {
+          @apply md:w-[400px] md:h-[235px];
+        }
+      }
+      .review-card {
+        p {
+          @apply font-normal text-lg;
+        }
+        h2 {
+          @apply font-semibold text-[24px];
+        }
+        h3 {
+          @apply font-normal text-[19px];
+        }
+      }
+    }
+  }
+  .section-six {
+    @apply mx-auto my-14;
+    .contact {
+      @apply text-center;
+      h1 {
+        @apply font-semibold text-[65px];
+      }
+      p {
+        @apply font-normal text-[21px] md:w-2/4 mx-auto;
+      }
+    }
+    .contact-btn {
+      @apply flex flex-col md:flex-row justify-center items-center gap-2 my-8;
+      input {
+        @apply w-[30%] border border-[#AFAFAF] bg-[#F8F8F8] p-2 rounded;
+      }
+      button {
+        @apply md:w-[8%]  bg-[#FD6F00] p-2 rounded text-white font-semibold;
+      }
+    }
+  }
+}
+.footer {
+  @apply mx-auto mt-14 bg-[#F8F8F8] space-y-8  pt-16;
+  .footer-logo {
+    @apply flex justify-center items-center px-4;
+    img {
+      @apply md:w-[67px];
+    }
+    h1 {
+      @apply text-4xl font-bold text-[#545454] ml-3;
+      span {
+        @apply text-5xl font-bold text-[#1E1E1E];
+      }
+    }
+  }
+  ul {
+    @apply flex flex-col md:flex-row gap-12 justify-center items-center px-4;
+    li {
+      @apply cursor-pointer font-normal text-lg hover:scale-105 duration-200;
+    }
+  }
+  p {
+    @apply w-full flex justify-center items-center bg-[#545454] h-[50px] text-white;
+    span {
+      @apply text-[#FD6F00] mx-1;
+    }
+  }
+}
