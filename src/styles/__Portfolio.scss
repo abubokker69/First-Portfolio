@@ -33,9 +33,12 @@
     li {
       @apply px-4 cursor-pointer font-medium text-3xl text-gray-300 hover:scale-105 duration-200;
     }
+    button {
+      @apply bg-[#FD6F00] px-3 py-1 text-white font-normal text-center rounded;
+    }
   }
   .section-one {
-    @apply flex flex-col-reverse md:flex-row justify-between items-center gap-4  mx-auto p-6 my-14;
+    @apply flex flex-col-reverse md:flex-row justify-between items-center gap-4 px-4 mx-auto  my-14;
     h5 {
       @apply font-semibold text-2xl;
     }
@@ -237,4 +240,10 @@
       @apply text-[#FD6F00] mx-1;
     }
   }
+}
+.tabs.tabs-content .all {
+  @apply hidden;
+}
+* {
+  scroll-behavior: smooth;
 }

@@ -1,5 +1,5 @@
 import "../styles/__Portfolio.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiMenu } from "react-icons/hi";
 import { FaWindowClose } from "react-icons/fa";
 import { navData } from "../data";
@@ -24,6 +24,9 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+// importing aos
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Portfolio: React.FC = () => {
   const [nav, setNav] = useState(false);
@@ -31,11 +34,37 @@ const Portfolio: React.FC = () => {
   const [two, setTwo] = useState<number>(95);
   const [three, setThree] = useState<number>(85);
   const [four, setFour] = useState<number>(50);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
+  useEffect(() => {
+    const tabs_title = document.querySelectorAll(".tab-title");
+
+    const toggleTab = (cls: string) => {
+      document.querySelectorAll(".tabs .all").forEach((item) => {
+        // @ts-ignore
+        item.style.display = "none";
+      });
+      document.querySelectorAll(`.tabs .all.${cls}`).forEach((item) => {
+        // @ts-ignore
+        item.style.display = "block";
+      });
+    };
+
+    tabs_title.forEach((el) => {
+      el.addEventListener("click", () => {
+        toggleTab(el.id);
+      });
+    });
+  }, []);
+
   return (
     <>
-      <div className="container-wrap">
+      <div className="container-wrap" id="home">
         <header>
-          <div className="container-port">
+          <div className="container-port" data-aos="zoom-in">
             <div className="logo">
               <img src={logo} alt="" />
               <h1>
@@ -44,9 +73,17 @@ const Portfolio: React.FC = () => {
             </div>
             <ul>
               {navData.map((data) => {
-                return <li key={data.id}>{data.name}</li>;
+                return (
+                  <li key={data.id}>
+                    <a href={data.navigate}>{data.name}</a>
+                  </li>
+                );
               })}
-              <button>Download CV</button>
+              <button>
+                <a href="/Abu Bokker CV.docx.pdf" download>
+                  Download Me
+                </a>
+              </button>
             </ul>
             <div onClick={() => setNav(!nav)} className="menuicon">
               {nav ? <FaWindowClose size="30" /> : <HiMenu size="30" />}
@@ -57,26 +94,30 @@ const Portfolio: React.FC = () => {
               {navData.map((data) => {
                 return <li key={data.id}>{data.name}</li>;
               })}
-              <button>Download CV</button>
+              <button>
+                <a href="file.txt" download>
+                  Download Me
+                </a>
+              </button>
             </ul>
           )}
         </header>
         <section className="section-one">
-          <div>
+          <div data-aos="fade-right">
             <h5>Hi I am</h5>
-            <h3>Muhammad Umair</h3>
+            <h3>Muhammad Bokker Molla</h3>
             <h1>
               <TypeAnimation
                 sequence={[
-                  "UI & UX",
+                  "Web & App",
                   500,
-                  "UI & UX", //  Continuing previous Text
+                  "Web & App", //  Continuing previous Text
                   500,
-                  "UI & UX",
+                  "Web & App",
                   500,
-                  "UI & UX",
+                  "Web & App",
                   500,
-                  "UI & UX",
+                  "Web & App",
                   500,
                   "",
                   500,
@@ -94,29 +135,37 @@ const Portfolio: React.FC = () => {
             </p>
             <button>Hire Me</button>
           </div>
-          <div className="right-one">
+          <div className="right-one" data-aos="fade-left">
             <img src={man1} alt="" />
             <ul>
               <li>
-                <img src={faccebook} alt="" />
+                <a href="https://www.facebook.com/md.abubokker.69/">
+                  <img src={faccebook} alt="" />
+                </a>
               </li>
               <li>
-                <img src={twiter} alt="" />
+                <a href="">
+                  <img src={twiter} alt="" />
+                </a>
               </li>
               <li>
-                <img src={instagram} alt="" />
+                <a href="https://www.instagram.com/abu_bokker69/">
+                  <img src={instagram} alt="" />
+                </a>
               </li>
               <li>
-                <img src={linkedin} alt="" />
+                <a href="https://www.linkedin.com/in/md-%C3%A4bu-bokker-8a9342180/">
+                  <img src={linkedin} alt="" />
+                </a>
               </li>
             </ul>
           </div>
         </section>
-        <section className="section-two">
-          <div className="left-two">
+        <section className="section-two" id="about">
+          <div className="left-two" data-aos="fade-right">
             <img src={man2} alt="" />
           </div>
-          <div className="right-two">
+          <div className="right-two" data-aos="fade-left">
             <h1>About Me </h1>
             <p>
               Lorem ipsum dolor sit amet consectetur. Tristique amet sed massa
@@ -133,15 +182,15 @@ const Portfolio: React.FC = () => {
             <input type="range" name="" id="" value={four} />
           </div>
         </section>
-        <section className="section-three">
-          <div className="service">
+        <section className="section-three" id="service">
+          <div className="service" data-aos="zoom-in">
             <h1>Services</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur. Tristique amet sed massa
               nibh lectus netus in. Aliquet donec morbi convallis pretium
             </p>
           </div>
-          <div className="service-wrap">
+          <div className="service-wrap" data-aos="zoom-in-up">
             {cardData.map((data, i) => {
               return (
                 <div key={i} className="service-card">
@@ -153,7 +202,7 @@ const Portfolio: React.FC = () => {
             })}
           </div>
         </section>
-        <section className="section-four">
+        <section className="section-four" id="project" data-aos="zoom-in-down">
           <div className="demo">
             <h1>My Projects</h1>
             <p>
@@ -161,27 +210,47 @@ const Portfolio: React.FC = () => {
               mauris est risus lectus. Phasellus consequat urna tellus
             </p>
           </div>
-          <div className="button">
-            <button className="button" id="all">All</button>
-            <button className="button" id="ux">UI/UX</button>
-            <button className="button" id="web">Web Design</button>
-            <button className="button" id="app">App Design</button>
-            <button className="button" id="graphics">Graphic Design</button>
-          </div>
-          <div className="template-wrap">
-            {template.map((data, i) => {
-              return (
-                <div key={i} className="template-card  all ">
-                  <img src={data.img} alt="" />
-                  <h2>{data.name}</h2>
-                  <p>{data.para}</p>
-                </div>
-              );
-            })}
+          <div className="tabs" data-aos="zoom-in-down">
+            <div className="tabs-header">
+              <div className="button">
+                <button className="tab-title button" id="all">
+                  All
+                </button>
+                <button className="tab-title button" id="ux">
+                  UI/UX
+                </button>
+                <button className="tab-title button" id="wdesign">
+                  Web Design
+                </button>
+                <button className="tab-title button" id="app-design">
+                  App Design
+                </button>
+                <button className="tab-title button" id="graphics">
+                  Graphic Design
+                </button>
+              </div>
+
+              <div className="tabs-content template-wrap">
+                {template.map((item) => (
+                  <div
+                    key={item.id}
+                    className={`template-card all ${item.category}`}
+                  >
+                    <img src={item.img} alt="" />
+                    <h2>{item.name}</h2>
+                    <p>{item.para}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
-        <section className="section-five">
-          <div className="review">
+        <section
+          className="section-five"
+          id="tesmonials"
+          data-aos="fade-down-left"
+        >
+          <div className="review" data-aos="zoom-in">
             <h1>Testimonials</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur. Tristique amet sed massa
@@ -201,6 +270,7 @@ const Portfolio: React.FC = () => {
             }}
             modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper"
+            data-aos="flip-up"
           >
             {review.map((data, i) => {
               return (
@@ -220,21 +290,21 @@ const Portfolio: React.FC = () => {
             })}
           </Swiper>
         </section>
-        <section className="section-six">
-          <div className="contact">
+        <section className="section-six" id="contact">
+          <div className="contact" data-aos="zoom-in">
             <h1>Lets Design Together</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur. Tristique amet sed massa
               nibh lectus netus in. Aliquet donec morbi convallis pretium
             </p>
           </div>
-          <div className="contact-btn">
+          <div className="contact-btn" data-aos="fade-left">
             <input type="text" name="" id="" placeholder="Enter your email" />
             <button>Contact Me</button>
           </div>
         </section>
       </div>
-      <footer className="footer">
+      <footer className="footer" data-aos="zoom-in-up">
         <div className="footer-logo">
           <img src={logo} alt="" />
           <h1>
@@ -243,21 +313,32 @@ const Portfolio: React.FC = () => {
         </div>
         <ul className="footer-menu">
           {navData.map((data) => {
-            return <li key={data.id}>{data.name}</li>;
+            return (
+              <li key={data.id}>
+                {" "}
+                <a href={data.navigate}>{data.name}</a>
+              </li>
+            );
           })}
         </ul>
         <ul className="footer-social">
           <li>
-            <img src={faccebook} alt="" />
+            <a href="https://www.facebook.com/md.abubokker.69/">
+              <img src={faccebook} alt="" />
+            </a>
           </li>
           <li>
             <img src={twiter} alt="" />
           </li>
           <li>
-            <img src={instagram} alt="" />
+            <a href="https://www.instagram.com/abu_bokker69/">
+              <img src={instagram} alt="" />
+            </a>
           </li>
           <li>
-            <img src={linkedin} alt="" />
+            <a href="https://www.linkedin.com/in/md-%C3%A4bu-bokker-8a9342180/">
+              <img src={linkedin} alt="" />
+            </a>
           </li>
         </ul>
         <p>

@@ -12,26 +12,32 @@ export const navData = [
   {
     id: 1,
     name: "Home",
+    navigate: "#home",
   },
   {
     id: 2,
     name: "About Me",
+    navigate: "#about",
   },
   {
     id: 3,
     name: "Sevice",
+    navigate: "#service",
   },
   {
     id: 4,
     name: "Projects",
+    navigate: "#project",
   },
   {
     id: 5,
     name: "Tesmonials",
+    navigate: "#tesmonials",
   },
   {
     id: 5,
     name: "Contact",
+    navigate: "#contact",
   },
 ];
 export const cardData = [
@@ -64,18 +70,21 @@ export const cardData = [
 export const template = [
   {
     id: 1,
+    category: "wdesign",
     img: group1,
     name: "Web Design ",
     para: "AirCalling Landing Page Design ",
   },
   {
     id: 2,
+    category: "wdesign",
     img: group2,
     name: "Web Design ",
     para: "Business Landing Page Design ",
   },
   {
     id: 3,
+    category: "app-design",
     img: group3,
     name: "App Design",
     para: "Ecom Web Page Design ",
